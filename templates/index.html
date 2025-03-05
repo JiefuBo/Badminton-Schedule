@@ -1,72 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Court Display</title>
+    <title>羽毛球场次规划</title>
     <link href="../static/index.css" rel="stylesheet" type="text/css">
     <script src="../static/script.js"></script>
+    <link rel="icon" type="image/png" href="../static/icon.png">
 </head>
 
 <body>
 
-<div>
-    <!--    <h1>Harry's Badminton Schedule</h1><br>-->
-    <h1>Harry 的 羽毛球 场次规划</h1>
-</div>
+<div class="watermark-container" id="watermark"></div>
+<div style="padding: 50px;"></div>
 
-<div class="court-container">
-    <!-- 第一行：7、8、9、10、11、12 -->
-    {% for court in courts if court.name in ['Court 7', 'Court 8', 'Court 9', 'Court 10', 'Court 11', 'Court 12'] %}
-    <div class="court {{ court.type }}">
-        <strong>{{ court.name }}</strong>
-        {% if court.type != 'Forbidden' %}
-        <div class="time">{{ court.time }}</div>
-        <div class="type-label">{{ court.type }}</div>
-        {% endif %}
+    <div>
+        <h1>Harry 的 羽毛球 场次规划</h1>
     </div>
-    {% endfor %}
 
-    <!-- 第二行：6、5、4、15、14、13 -->
-    {% for court in courts if court.name in ['Court 6', 'Court 5', 'Court 4', 'Court 15', 'Court 14', 'Court 13'] %}
-    <div class="court {{ court.type }}">
-        <strong>{{ court.name }}</strong>
-        {% if court.type != 'Forbidden' %}
-        <div class="time">{{ court.time }}</div>
-        <div class="type-label">{{ court.type }}</div>
-        {% endif %}
-    </div>
-    {% endfor %}
+    <div class="court-container">
+        <!-- 第一行：7、8、9、10、11、12 -->
+        {% for court in courts if court.name in ['Court 7', 'Court 8', 'Court 9', 'Court 10', 'Court 11', 'Court 12'] %}
+        <div class="court {{ court.type }}">
+            <strong>{{ court.name }}</strong>
+            {% if court.type != 'Forbidden' %}
+            <div class="time">{{ court.time }}</div>
+            <div class="type-label">{{ court.type }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
 
-    <!-- 第三行：1、2、3、16、17、18 -->
-    {% for court in courts if court.name in ['Court 1', 'Court 2', 'Court 3', 'Court 16', 'Court 17', 'Court 18'] %}
-    <div class="court {{ court.type }}">
-        <strong>{{ court.name }}</strong>
-        {% if court.type != 'Forbidden' %}
-        <div class="time">{{ court.time }}</div>
-        <div class="type-label">{{ court.type }}</div>
-        {% endif %}
+        <!-- 第二行：6、5、4、15、14、13 -->
+        {% for court in courts if court.name in ['Court 6', 'Court 5', 'Court 4', 'Court 15', 'Court 14', 'Court 13'] %}
+        <div class="court {{ court.type }}">
+            <strong>{{ court.name }}</strong>
+            {% if court.type != 'Forbidden' %}
+            <div class="time">{{ court.time }}</div>
+            <div class="type-label">{{ court.type }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <!-- 第三行：1、2、3、16、17、18 -->
+        {% for court in courts if court.name in ['Court 1', 'Court 2', 'Court 3', 'Court 16', 'Court 17', 'Court 18'] %}
+        <div class="court {{ court.type }}">
+            <strong>{{ court.name }}</strong>
+            {% if court.type != 'Forbidden' %}
+            <div class="time">{{ court.time }}</div>
+            <div class="type-label">{{ court.type }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-<a href="{{ url_for('edit') }}" class="edit-link">Edit</a>
-<div class="clock" id="clock"></div>                        <!--时钟的内容-->
-<div class="date" id="date"></div>                          <!--日期的内容-->
-<!--<script src="script.js"></script>-->
+    <a href="{{ url_for('edit') }}" class="edit-link">Edit</a>
+    <div class="clock" id="clock"></div>                        <!--时钟的内容-->
+    <div class="date" id="date"></div>                          <!--日期的内容-->
+
+
+
 <script>
+    function generateWatermark(text) {
+        const container = document.getElementById("watermark");
+        const cols = Math.ceil(window.innerWidth / 200);
+        const rows = Math.ceil(window.innerHeight / 100);
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                let watermark = document.createElement("div");
+                watermark.className = "watermark";
+                watermark.style.top = `${i * 100}px`;
+                watermark.style.left = `${j * 200}px`;
+                watermark.innerText = text;
+                container.appendChild(watermark);
+            }
+        }
+    }
 
-
-    document.addEventListener('DOMContentLoaded', function() {
-    const watermark = document.createElement('div');
-    watermark.className = 'watermark';
-    watermark.textContent = 'Dynamic Watermark';
-    document.body.appendChild(watermark);
-});
+    generateWatermark("原创设计 - 版权所有 - 违者必究");
 </script>
 </body>
 
 <footer>
-    <p>Jiefu Bo© 2025 版权所有 违者必究</a></p>
+    <p>Jiefu Bo© 2025 版权所有 违者必究</p>
 </footer>
 
 </html>

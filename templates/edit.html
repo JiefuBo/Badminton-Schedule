@@ -1,28 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="zh">
+<link>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Court Information</title>
+    <title>编辑 羽毛球场次规划</title>
     <link href="../static/edit.css" rel="stylesheet" type="text/css">
-    <script>
-        // JavaScript 函数：根据选择的类型动态控制时间输入框
-        function toggleTimeInput(selectElement) {
-            // 获取当前行的输入框
-            const timeInput = selectElement.parentElement.parentElement.querySelector('input[type="text"]');
-            // 如果选择的是 "禁止使用"，则禁用输入框并清空值
-            if (selectElement.value === 'Forbidden') {
-                timeInput.disabled = true;
-                timeInput.value = ''; // 清空时间
-            } else {
-                // 否则启用输入框
-                timeInput.disabled = false;
-            }
-        }
-    </script>
+    <script src="../static/script.js"></script>
+    <link rel="icon" type="image/png" href="../static/icon.png"></link>
 </head>
 <body>
-<h1>Edit Court Information</h1>
+<h1>编辑 羽毛球场次规划</h1>
 <form method="POST">
     <!-- 表格开始 -->
     <table>
@@ -41,11 +28,11 @@
             <td>
                 <!-- 类型下拉框 -->
                 <select name="type{{ loop.index0 }}" onchange="toggleTimeInput(this)" type="select">
-                    <option value="Social" {% if court.type==
+                    <option value="初级场" {% if court.type==
                     'Social' %}selected{% endif %}>初级场</option>
-                    <option value="Beginner" {% if court.type==
+                    <option value="中级场" {% if court.type==
                     'Beginner' %}selected{% endif %}>中级场</option>
-                    <option value="Advance" {% if court.type==
+                    <option value="高级场" {% if court.type==
                     'Advance' %}selected{% endif %}>高级场</option>
                     <option value="Forbidden" {% if court.type==
                     'Forbidden' %}selected{% endif %}>禁止使用</option>

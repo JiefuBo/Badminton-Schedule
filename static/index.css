@@ -51,15 +51,15 @@ h1 {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.court.Social {
+.court.初级场 {
     background-color: #40eac4;
 }
 
-.court.Beginner {
+.court.中级场 {
     background-color: #fecb24;
 }
 
-.court.Advance {
+.court.高级场 {
     background-color: #d9472b;
 }
 
@@ -130,4 +130,29 @@ h1 {
     right: 40px;
     font-size: 20px;
     color: #fff;
+}
+
+.watermark-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+    white-space: nowrap; /* 防止换行 */
+    user-select: none; /* 防止用户选择水印文本 */
+}
+
+.watermark {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    color: rgba(0, 0, 0, 0.02);
+    font-size: 20px;
+    font-weight: bold;
+    transform: rotate(-45deg);
+    white-space: nowrap; /* 防止换行 */
+    user-select: none; /* 防止用户选择水印文本 */
 }
