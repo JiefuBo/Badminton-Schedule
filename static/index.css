@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 132, 255, 0.18);
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* 使 body 占满整个视口高度 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("./golden-gate-bridge-scaled.jpg"); /*图片链接*/
+    backgroung-size: cover; /*图片大小*/
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.court-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6列 */
+    grid-template-rows: repeat(3, 1fr); /* 3行 */
+    gap: 10px; /* 间距 */
+    width: 90vw; /* 宽度为视口宽度的90% */
+    height: 70vh; /* 高度为视口高度的70% */
+    max-width: 1200px; /* 最大宽度限制 */
+    max-height: 800px; /* 最大高度限制 */
+    margin: 0 auto;
+}
+
+.court {
+    background-color: #fff;
+    border-radius: 15px; /* 圆角矩形 */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.court:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.court.Social {
+    background-color: #40eac4;
+}
+
+.court.Beginner {
+    background-color: #fecb24;
+}
+
+.court.Advance {
+    background-color: #d9472b;
+}
+
+.court.Forbidden {
+    background-color: lightgray;
+}
+
+.court strong {
+    display: block;
+    font-size: min(3vw, 24px); /* 字体大小随视口宽度变化 */
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.court .time {
+    font-size: 20px;; /* 字体大小随视口宽度变化 */
+    color: #fff500;
+    margin-bottom: 5px;
+}
+
+.court .type-label {
+    font-size: min(2vw, 16px); /* 字体大小随视口宽度变化 */
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.court.Forbidden .time,
+.court.Forbidden .type-label {
+    display: none; /* 隐藏时间和类型标签 */
+}
+
+.court.Forbidden::after {
+    content: "🚫"; /* 禁止标志 */
+    font-size: min(3vw, 24px); /* 标志大小随视口宽度变化 */
+    color: #ff0000; /* 红色标志 */
+}
+
+.edit-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.edit-link:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    margin-top: 3px; /* 减少上外边距 */
+    margin-bottom: 3px; /* 减少下外边距 */
+}
+
+.clock {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 60px;
+    color: #fff;
+}
+
+.date {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 20px;
+    color: #fff;
+}

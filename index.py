@@ -38,6 +38,6 @@ def edit():
     return render_template('edit.html', courts=courts)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    Flask.run(app, host='0.0.0.0', port=5004)
 
     #Jiefu Bo© 2025    版权所有    违者必究
