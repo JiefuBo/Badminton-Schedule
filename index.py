@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-# 初始数据
+
 courts = [
     {"name": "Court 1", "type": "Forbidden", "time": "8-11 pm"},
     {"name": "Court 2", "type": "Forbidden", "time": "8-11 pm"},
