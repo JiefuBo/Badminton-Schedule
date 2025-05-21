@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>生成密钥</title>
+</head>
+<body>
+    <h2>生成密钥文件</h2>
+    <form method="post">
+        授权信息：<input type="text" name="key" required><br>
+        起始时间：<input type="datetime-local" name="start_datetime" required><br>
+        截止时间：<input type="datetime-local" name="end_datetime" required><br>
+        <button type="submit">生成密钥文件</button>
+    </form>
+    {% if download_link %}
+    <p>密钥生成成功：<a href="{{ download_link }}">下载密钥文件</a></p>
+    {% endif %}
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <button onclick="window.location.href='/'">返回首页</button>
+</body>
+</html>

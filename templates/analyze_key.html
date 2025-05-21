@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>解析密钥文件</title>
+</head>
+<body>
+    <h2>反向解析密钥文件</h2>
+    <form method="post" enctype="multipart/form-data">
+        授权信息：<input type="text" name="auth_info" required><br>
+        密钥文件：<input type="file" name="keyfile" accept=".txt" required><br>
+        <button type="submit">解析</button>
+    </form>
+    {% if result %}
+    <p style="color:green;">{{ result }}</p>
+    {% endif %}
+    {% if error %}
+    <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <button onclick="window.location.href='/'">返回首页</button>
+</body>
+</html>
